@@ -1,0 +1,53 @@
+<div class="content">
+    <button class="btn btn-dark" (click)="changeView()">{{text}}</button>
+</div>
+
+<div class="mb-3 content" *ngIf="addView">
+    <form [formGroup]="DesignForm" (ngSubmit)="addDesignToFirebase()">
+        <label for="Name" class="form-label">Name of Alloy</label>
+        <input type="text" class="form-control" id="Name" placeholder="Enter name of alloy"
+        formControlName="Name">
+        <br>
+    
+        <label for="Brand" class="form-label">Brand of Alloy</label>
+        <input type="text" class="form-control" id="Brand" placeholder="Enter brand of alloy"
+        formControlName="Brand">
+        <br>
+        
+        <label for="Rate" class="form-label">Rate of Alloy</label>
+        <input type="text" class="form-control" id="Rate" placeholder="Enter rate of alloy"
+        formControlName="Rate">
+        <br>
+        
+        <label for="Quantity" class="form-label">Qty of Alloy</label>
+        <input type="text" class="form-control" id="Quantity" placeholder="Enter quantity of alloy"
+        formControlName="Quantity">
+        <br>
+        
+        <label for="Size" class="form-label">Size of Alloy</label>
+        <input type="text" class="form-control" id="Size" placeholder="Enter size of alloy"
+        formControlName="Size">
+        <br>
+        
+        <button type="submit" class="btn btn-dark">Add Alloy</button>
+
+    </form>
+
+
+</div>
+
+<div class="content" *ngIf="!addView">
+    <h3>List of Alloys</h3>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Size</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let document of alloyList">
+            <td><button class="btn btn-dark">{{document.size}}</button></td>
+          </tr>
+        </tbody>
+      </table>
+</div>

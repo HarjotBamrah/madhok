@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "madhoktyres-4a1f7": {
+      "hosting": {
+        "madhok-backend-app": [
+          "madhoktyres-4a1f7"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "madhoktyres-4a1f7"
+  }
+}

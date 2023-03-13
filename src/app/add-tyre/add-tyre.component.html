@@ -1,0 +1,50 @@
+<div class="content">
+  <button class="btn btn-dark" (click)="changeView()">{{text}}</button>
+</div>
+
+<div class="mb-3 content" *ngIf="addView">
+  <form [formGroup]="DesignForm" (ngSubmit)="addTyreToFirebase()">
+    <label for="Name" class="form-label">Name of Tyre</label>
+    <input type="text" class="form-control" id="Name" placeholder="Enter name of tyre" formControlName="Name">
+    <br>
+
+    <label for="Brand" class="form-label">Brand of Tyre</label>
+    <input type="text" class="form-control" id="Brand" placeholder="Enter brand of tyre" formControlName="Brand">
+    <br>
+
+    <label for="Rate" class="form-label">Rate of Tyre</label>
+    <input type="text" class="form-control" id="Rate" placeholder="Enter rate of tyre" formControlName="Rate">
+    <br>
+
+    <label for="Quantity" class="form-label">Qty of Tyre</label>
+    <input type="text" class="form-control" id="Quantity" placeholder="Enter quantity of tyre"
+      formControlName="Quantity">
+    <br>
+
+    <label for="Size" class="form-label">Size of Tyre</label>
+    <input type="text" class="form-control" id="Size" placeholder="Enter size of tyre" formControlName="Size">
+    <br>
+
+    <button type="submit" class="btn btn-dark">Add Tyre</button>
+
+  </form>
+
+
+</div>
+
+<div class="content" *ngIf="!addView">
+  <h3>List of Tyres</h3>
+  <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Size</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let document of tyreList">
+          <td><button class="btn btn-dark">{{document.size}}</button></td>
+          <td><a routerLink="/tyreSize" [queryParams]="{id: document.uid, size:document.size}">List of Tyres</a></td>
+        </tr>
+      </tbody>
+    </table>
+</div>
